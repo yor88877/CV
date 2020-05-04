@@ -11,6 +11,7 @@ linkedin: Jorge-King-M
 date: "`r format(Sys.time(), '%B %Y')`"
 aboutme: "CSPA, Data scientist, actuary, expert in finance, risk managent, predictive analysis, analytics, and data analysis"
 output: vitae::twentyseconds
+        html_document:default
         
 ---
 
@@ -73,8 +74,6 @@ tribble(
   detailed_entries(role, dates, company, loc, details)
 ```
 
-# References
-
 ```{r}
 scholar::get_publications("EmD_lTEAAAAJ&EmD_lTEAAAAJ&") %>% 
   filter(cites > 30) %>% 
@@ -88,10 +87,3 @@ scholar::get_publications("EmD_lTEAAAAJ&EmD_lTEAAAAJ&") %>%
 bibliography_entries("curie.bib")
 ```
 
-#Grafico
-```{r}
-programas<-c("Python","R", "SQL","SAS","STATA")
-calificacion<-c(2,5,3,4,1)
-p<-data.frame(programas,calificacion)
-ggplot2::ggplot(p, aes(x=programas, y=calificacion, fill=calificacion))+geom_bar(stat = "identity", width = 0.85)+ coord_flip()
-```
