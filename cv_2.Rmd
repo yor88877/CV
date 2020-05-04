@@ -11,7 +11,6 @@ linkedin: Jorge-King-M
 date: "`r format(Sys.time(), '%B %Y')`"
 aboutme: "CSPA, Data scientist, actuary, expert in finance, risk managent, predictive analysis, analytics, and data analysis"
 output: vitae::twentyseconds
-        html_document:default
         
 ---
 
@@ -22,7 +21,7 @@ library(vitae)
 
 # Some stuff about me
 
- * Knowledge and expierencia in diferrent programing languages: Python, R, SAS, VBA, SQL, Simul8, Vensim, Xpress, STATA
+ * Knowledge and expierencia in diferrent programing languages: Python, R, SAS, VBA, SQL, Simul8, Vensim, Xpress, STATA, git, docker, APIs
  * Knowledge and expierencia in diferrent data visualization software: Power BI, Tableu, Qlik, Oracle Data Visualization, Power point.
   * Knowledge and expierencia in diferrent finance software: Adaptive planing, Moodys, Excel.
  * I was the first person of my country to gain the CSPA certification of the Casuality Actuarial Society.
