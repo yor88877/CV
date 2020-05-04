@@ -1,0 +1,97 @@
+---
+name: Jorge King
+surname:  .
+position: "Actuarial and Data Science Manager"
+address: "Urb. Villa Fontana lote 15B via arrayenes Puembo - Ecuador"
+phone: +593 984057673
+profilepic: cv.jpg
+email: "jkm88877@hotmail.com"
+github: jorge.king
+linkedin: Jorge-King-M
+date: "`r format(Sys.time(), '%B %Y')`"
+aboutme: "CSPA, Data scientist, actuary, expert in finance, risk managent, predictive analysis, analytics, and data analysis"
+output: vitae::twentyseconds
+        
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+```
+
+# Some stuff about me
+
+ * Knowledge and expierencia in diferrent programing languages: Python, R, SAS, VBA, SQL, Simul8, Vensim, Xpress, STATA
+ * Knowledge and expierencia in diferrent data visualization software: Power BI, Tableu, Qlik, Oracle Data Visualization, Power point.
+  * Knowledge and expierencia in diferrent finance software: Adaptive planing, Moodys, Excel.
+ * I was the first person of my country to gain the CSPA certification of the Casuality Actuarial Society.
+  * Maximiun honors in my master degree in UK and scholar of my country to study there.
+  
+# Education
+
+```{r}
+library(tibble)
+tribble(
+  ~ Degree, ~ Year, ~ Institution, ~ Where,
+  "Diploma in Actuarial Science", "2018", "Universidad Catolica de Chile", "Santiago - Chile",
+  "MSc (Hons) in Operational reseach, applied statistics and risk managment", "2016", "Cardiff University", "Cardiff - United Kingdom",
+  "MSc in Corporative Finance", "2015", "Escuela Politecnica del Ejercito ESPE", "Quito - Ecuador",
+  "Diploma in Finance Strategy", "2014", "Universidad de la Plata", "La Plata - Argentina",
+   "MSc in Finance and Insurence Laws", "2012", "Universidad Andina Simon Bolivar", "Quito - Ecuador",
+  "BSc in Marketing", "2012", "Universidad San Francisco de Quito", "Quito - Ecuador",
+  "BSc in Bussiness Administration","2012", "Universidad San Francisco de Quito", "Quito - Ecuador",
+  "BSc in Laws", "2011", "Universidad de las Americas", "Quito - Ecuador"
+) %>% 
+  detailed_entries(Degree, Year, Institution, Where)
+```
+
+# Experience
+```{r}
+tribble(
+  ~ role, ~ company, ~ loc, ~ dates, ~ details,
+  "Actuarial and data analytics manager", "Quito - Ecuador", "Aseguradora del Sur", "2016 - Actual", "Pricing, reservas, underwriting guide, investment",
+  "Actuarial and data analytics manager", "Quito - Ecuador", "Aseguradora del Sur", "2016 - Actual", "Risk managment include financial risk and operational risk",
+  "Actuarial and data analytics manager", "Quito - Ecuador","Aseguradora del Sur", "2016 - Actual", "Budget and forecasting",
+  "Actuarial and data analytics manager", "Quito - Ecuador", "Aseguradora del Sur",  "2016 - Actual", "Analytics",
+  "Actuarial and data analytics manager", "Quito - Ecuador", "Aseguradora del Sur",  "2016 - Actual", "Predictive analysis, scoring, cross and up selling",
+  "Actuarial and data analytics manager", "Quito - Ecuador", "Aseguradora del Sur",  "2016 - Actual", "New products",
+  "Actuarial and data analytics manager", "Quito - Ecuador", "Aseguradora del Sur",  "2016 - Actual", "Data mining",
+    "Research Internship", "United Kingdom", "Lloyds Bank",  "2016", "Control de process of reserves",
+    "Research Internship", "United Kingdom", "Lloyds Bank",  "2016", "Behavior and credit risk scoring",
+  "Risk and statican analyst", "Quito - Ecuador", "Aseguradora del Sur",  "2014 - 2015", "Forecasting",
+    "Risk and statican analyst", "Quito - Ecuador", "Aseguradora del Sur",  "2014 - 2015", "Credit, Liquidity and mercado risk",
+    "Risk and statican analyst", "Quito - Ecuador", "Aseguradora del Sur",  "2014 - 2015", "Apetito de riesgo y limites",
+    "Risk and statican analyst", "Quito - Ecuador", "Aseguradora del Sur",  "2014 - 2015", "Financial analysis",
+    "Risk and statican analyst", "Quito - Ecuador", "Aseguradora del Sur",  "2014 - 2015", "Bussiness Intelligence",
+    "Credit risk analyst", "Quito - Ecuador", "Banco Pichincha",  "2010 - 2014", "Economic analysis",
+  "Credit risk analyst", "Quito - Ecuador", "Banco Pichincha",  "2010 - 2014", "Risk analysis",
+  "Credit risk analyst", "Quito - Ecuador", "Banco Pichincha",  "2010 - 2014", "Financial analysis of finance reports",
+  "Credit risk analyst", "Quito - Ecuador", "Banco Pichincha",  "2010 - 2014", "Projects fsactibility",
+  "Credit risk analyst", "Quito - Ecuador", "Banco Pichincha",  "2010 - 2014", "forecasting",
+  "Credit risk analyst", "Quito - Ecuador", "Banco Pichincha",  "2010 - 2014", "provision of cartera",
+) %>% 
+  detailed_entries(role, dates, company, loc, details)
+```
+
+# References
+
+```{r}
+scholar::get_publications("EmD_lTEAAAAJ&EmD_lTEAAAAJ&") %>% 
+  filter(cites > 30) %>% 
+  distinct(title, .keep_all = TRUE) %>%
+  transmute(bibtype = "Article", author = as.character(author),
+            title = as.character(title),
+            journaltitle = as.character(journal), year, key = row_number()) %>% 
+  RefManageR::as.BibEntry() %>% 
+  RefManageR::WriteBib("curie.bib")
+
+bibliography_entries("curie.bib")
+```
+
+#Grafico
+```{r}
+programas<-c("Python","R", "SQL","SAS","STATA")
+calificacion<-c(2,5,3,4,1)
+p<-data.frame(programas,calificacion)
+ggplot2::ggplot(p, aes(x=programas, y=calificacion, fill=calificacion))+geom_bar(stat = "identity", width = 0.85)+ coord_flip()
+```

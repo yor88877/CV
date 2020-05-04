@@ -1,0 +1,217 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Twenty Seconds Resume/CV
+% LaTeX Template
+% Version 1.1 (8/1/17)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Carmine Spagnuolo (cspagnuolo@unisa.it) with major modifications by
+% Vel (vel@LaTeXTemplates.com)
+%
+% Adapted to be an Rmarkdown template by Rob J Hyndman
+% 23 November 2018
+%
+% License:
+% The MIT License (see included LICENSE file)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt,a4paper,]{twentysecondcv}
+
+\usepackage[scaled=0.86]{DejaVuSansMono}
+
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{csquotes}
+
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+
+\usepackage{booktabs}
+
+
+%%%% BIBLIOGRAPHY
+% Bibliography formatting
+
+\usepackage[sorting=ynt,citestyle=authoryear,bibstyle=authoryear-comp,defernumbers=true,maxnames=20,giveninits=true, bibencoding=utf8, terseinits=true, uniquename=init,dashed=false,doi=false,isbn=false,natbib=true,backend=biber]{biblatex}
+
+\DeclareFieldFormat{url}{\url{#1}}
+\DeclareFieldFormat[article]{pages}{#1}
+\DeclareFieldFormat[inproceedings]{pages}{\lowercase{pp.}#1}
+\DeclareFieldFormat[incollection]{pages}{\lowercase{pp.}#1}
+\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+\DeclareFieldFormat[article]{title}{\MakeCapital{#1}}
+\DeclareFieldFormat[article]{url}{}
+\DeclareFieldFormat[inproceedings]{title}{#1}
+\DeclareFieldFormat{shorthandwidth}{#1}
+\DeclareFieldFormat{extradate}{}
+
+% No dot before number of articles
+\usepackage{xpatch}
+\xpatchbibmacro{volume+number+eid}{\setunit*{\adddot}}{}{}{}
+
+% Remove In: for an article.
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{%
+  \printtext{\bibstring{in}\intitlepunct}}}
+
+%\makeatletter
+%\DeclareDelimFormat[cbx@textcite]{nameyeardelim}{\addspace}
+%\makeatother
+
+\setlength{\bibitemsep}{1.8pt}
+\setlength{\bibhang}{.9cm}
+%\renewcommand{\bibfont}{\fontsize{12}{14}}
+
+\renewcommand*{\bibitem}{\addtocounter{papers}{1}\item \mbox{}\hskip-0.9cm\hbox to 0.9cm{\hfill\arabic{papers}.~\,}}
+\defbibenvironment{bibliography}
+{\list{}
+  {\setlength{\leftmargin}{\bibhang}%
+   \setlength{\itemsep}{\bibitemsep}%
+   \setlength{\parsep}{\bibparsep}}}
+{\endlist}
+{\bibitem}
+
+\renewcommand{\bibfont}{\normalfont\fontsize{10}{12.4}\selectfont}
+% Counters for keeping track of papers
+\newcounter{papers}
+
+\DeclareSortingTemplate{ty}{
+  \sort{
+    \field{title}
+  }
+  \sort{
+    \field{year}
+  }
+}
+\DeclareBibliographyCategory{bib-C:/Users/kingj/Downloads/CV_English_Resume/curie.bib-5982979}
+\bibliography{C:/Users/kingj/Downloads/CV_English_Resume/curie.bib}
+
+%----------------------------------------------------------------------------------------
+%	 PERSONAL INFORMATION
+%----------------------------------------------------------------------------------------
+
+% If you don't need one or more of the below, just remove the content leaving the command, e.g. \cvnumberphone{}
+
+% Profile pic
+\profilepic{cv.jpg}
+
+\cvname{Jorge King.} % Your name
+
+\cvjobtitle{Actuarial and Data Science Manager} % Job title/career
+\cvdate{marzo 2020} % Date of birth or date of CV??
+\cvaddress{Urb. Villa Fontana lote 15B via arrayenes Puembo - Ecuador} % Short address/location, use \newline if more than 1 line is required
+\cvnumberphone{+593 984057673} % Phone number
+\cvsite{} % Personal website
+\cvmail{\href{mailto:jkm88877@hotmail.com}{\nolinkurl{jkm88877@hotmail.com}}} % Email address
+\cvtwitter{}
+\cvgithub{\href{https://github.com/jorge.king}{jorge.king}}
+\cvlinkedin{\href{https://www.linkedin.com/in/Jorge-King-M}{Jorge-King-M}}
+
+% Templates for detailed entries
+% Arguments: what when with where why
+\usepackage{etoolbox}
+\def\detaileditem#1#2#3#4#5{
+\twentyitem{#2}{#1}{#3}{\ifx#4\empty\else#4\par\fi\ifx#5\empty\else{\begin{minipage}{0.7\textwidth}\begin{itemize}#5\end{itemize}\end{minipage}}\fi}}
+\def\detailedsection#1{\nopagebreak\begin{twenty}#1\end{twenty}}
+
+% Templates for brief entries
+% Arguments: what when with
+\def\briefitem#1#2#3{\twentyitemshort{#2}{#1. #3}}
+\def\briefsection#1{\nopagebreak\begin{twentyshort}#1\end{twentyshort}}
+
+\lfoot{\sf Curriculum Vitae: Jorge King .}
+\rfoot{\sf\thepage}
+
+\begin{document}
+\aboutme{CSPA, Data scientist, actuary, expert in finance, risk managent, predictive analysis, analytics, and data analysis}
+
+% Skill bar section, each skill must have a value between 0 an 6 (float)
+%\skills{{pursuer of rabbits/5.8},{good manners/4},{outgoing/4.3},{polite/4},{Java/0.01}}
+
+% Skill text section, each skill must have a value between 0 an 6
+%\skillstext{{lovely/4},{narcissistic/3}}
+
+\makeprofile % Print the sidebar
+
+
+
+
+\hypertarget{some-stuff-about-me}{%
+\section{Some stuff about me}\label{some-stuff-about-me}}
+
+\begin{itemize}
+\tightlist
+\item
+  Knowledge and expierencia in diferrent programing languages: Python, R, SAS, VBA, SQL, Simul8, Vensim, Xpress, STATA
+\item
+  Knowledge and expierencia in diferrent data visualization software: Power BI, Tableu, Qlik, Oracle Data Visualization, Power point.
+\item
+  Knowledge and expierencia in diferrent finance software: Adaptive planing, Moodys, Excel.
+\item
+  I was the first person of my country to gain the CSPA certification of the Casuality Actuarial Society.
+\item
+  Maximiun honors in my master degree in UK and scholar of my country to study there.
+\end{itemize}
+
+\hypertarget{education}{%
+\section{Education}\label{education}}
+
+\detailedsection{\detaileditem{Diploma in Actuarial Science}{2018}{Universidad Catolica de Chile}{Santiago - Chile}{\empty}\detaileditem{MSc (Hons) in Operational reseach, applied statistics and risk managment}{2016}{Cardiff University}{Cardiff - United Kingdom}{\empty}\detaileditem{MSc in Corporative Finance}{2015}{Escuela Politecnica del Ejercito ESPE}{Quito - Ecuador}{\empty}\detaileditem{Diploma in Finance Strategy}{2014}{Universidad de la Plata}{La Plata - Argentina}{\empty}\detaileditem{MSc in Finance and Insurence Laws}{2012}{Universidad Andina Simon Bolivar}{Quito - Ecuador}{\empty}\detaileditem{BSc in Marketing}{2012}{Universidad San Francisco de Quito}{Quito - Ecuador}{\empty}\detaileditem{BSc in Bussiness Administration}{2012}{Universidad San Francisco de Quito}{Quito - Ecuador}{\empty}\detaileditem{BSc in Laws}{2011}{Universidad de las Americas}{Quito - Ecuador}{\empty}}
+
+\hypertarget{experience}{%
+\section{Experience}\label{experience}}
+
+\detailedsection{\detaileditem{Actuarial and data analytics manager}{2016 - Actual}{Quito - Ecuador}{Aseguradora del Sur}{\item{Pricing, reservas, underwriting guide, investment}\item{Risk managment include financial risk and operational risk}\item{Budget and forecasting}\item{Analytics}\item{Predictive analysis, scoring, cross and up selling}\item{New products}\item{Data mining}}\detaileditem{Research Internship}{2016}{United Kingdom}{Lloyds Bank}{\item{Control de process of reserves}\item{Behavior and credit risk scoring}}\detaileditem{Risk and statican analyst}{2014 - 2015}{Quito - Ecuador}{Aseguradora del Sur}{\item{Forecasting}\item{Credit, Liquidity and mercado risk}\item{Apetito de riesgo y limites}\item{Financial analysis}\item{Bussiness Intelligence}}\detaileditem{Credit risk analyst}{2010 - 2014}{Quito - Ecuador}{Banco Pichincha}{\item{Economic analysis}\item{Risk analysis}\item{Financial analysis of finance reports}\item{Projects fsactibility}\item{forecasting}\item{provision of cartera}}}
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\defbibheading{bib-C:/Users/kingj/Downloads/CV_English_Resume/curie.bib-5982979}{}
+\addtocategory{bib-C:/Users/kingj/Downloads/CV_English_Resume/curie.bib-5982979}{1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14}
+\newrefcontext[sorting=none]\setcounter{papers}{0}\pagebreak[3]
+\printbibliography[category=bib-C:/Users/kingj/Downloads/CV_English_Resume/curie.bib-5982979,heading=none]\setcounter{papers}{0}
+
+\nocite{1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14}
+
+
+
+\end{document}
